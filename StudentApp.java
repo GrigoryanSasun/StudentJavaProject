@@ -30,7 +30,8 @@ public class StudentApp {
             System.out.println("(2) Input students");
             System.out.println("(3) View classes");
             System.out.println("(4) Input classes");
-            System.out.println("(5) Exit");
+            System.out.println("(5) Send email");
+            System.out.println("(6) Exit");
             int choice;
             choice = scanner.nextInt();
             switch (choice) {
@@ -98,6 +99,28 @@ public class StudentApp {
                     System.out.println("Classes successfully created!");
                     break;
                 case 5:
+                    if (_studentData == null)
+                    {
+                        System.out.println("No students found!");
+                    }
+                    else
+                    {
+                        scanner.nextLine();
+                        System.out.print("Specify the class name: ");
+                        String className = scanner.nextLine();
+                        for (int i=0;i<_studentData.length;i++)
+                        {
+                            for (int j=3;j<_studentData[i].length;j++)
+                            {
+                                if (_studentData[i][j].equalsIgnoreCase(className))
+                                {
+                                    System.out.println("Sending email to " + _studentData[i][2]);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 6:
                     showMenu = false;
                     break;
                 default:
